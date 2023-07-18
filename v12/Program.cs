@@ -29,6 +29,12 @@ app.UseUmbraco()
                  u.UseWebsiteEndpoints();
              });
 
+app.UseCors(x => x
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .SetIsOriginAllowed(origin => true)
+        .WithOrigins("https://localhost:44351"));
+
 app.Run();
 
 

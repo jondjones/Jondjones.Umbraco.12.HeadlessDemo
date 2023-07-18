@@ -62,6 +62,13 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 
+*.node_modules/*
+node_modules
+./node_modules
+*.next/*
+
+v12/umbraco/Data/TEMP/*
+
 # Tye
 .tye/
 
