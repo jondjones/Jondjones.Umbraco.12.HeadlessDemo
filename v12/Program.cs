@@ -1,7 +1,8 @@
 using Umbraco.Cms.Core.Services;
+using v12.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-var env = builder.Environment ;
+var env = builder.Environment;
 var config = builder.Configuration;
 
 builder.Services.AddUmbraco(env, config)
@@ -9,8 +10,14 @@ builder.Services.AddUmbraco(env, config)
     .AddWebsite()
     .AddComposers()
     .AddDeliveryApi()
-    .AddComposers()
     .Build();
+
+
+//builder.Services.AddDbContext<MyContext>();
+
+builder.Services.AddUmbracoEFCoreContext<MyContext>(
+    config.GetConnectionString("umbracoDbDSN"),
+    config.GetConnectionStringProviderName("umbracoDbDSN"));
 
 builder.Services.AddControllers();
 
