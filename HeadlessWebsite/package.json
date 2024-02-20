@@ -1,0 +1,27 @@
+{
+  "name": "next-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "export": "next export",
+    "start": "next start",
+    "netlify": "npm run build && npm run export",
+    "start-api": "netlify-lambda serve functions",
+    "cypress": "cypress run"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "netlify-lambda": "^2.0.8",
+    "next": "^13.4.10",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "cypress": "^4.2.0",
+    "netlify-plugin-cypress": "^1.2.0"
+  }
+}

@@ -26,10 +26,22 @@ public class MyApiController : UmbracoApiController {
         return Ok(comments);
     }
 
+    [HttpGet]
+    public async Task<IActionResult> ErrorOne() {
+
+        using IEfCoreScope<MyContext> scope = _efCoreScopeProvider.CreateScope();
+        var comments = await scope.ExecuteWithContextAsync(async db => {
+            return db.CustomUsers;
+        });
+
+        scope.Complete();
+        return Ok(comments);
+    }
+
     // URL umbraco/api/myapi/adddummyuser
     public async Task<IActionResult> AddDummyUser() {
 
-        var comment = new CustomUsers {
+        var comment = new CustomUser {
             Name = "test-code",
             Surname = "test-code",
         };

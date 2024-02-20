@@ -1,0 +1,6 @@
+version: 1
+
+sources:
+  exclusions:
+    - 'out'
+    - '.git'

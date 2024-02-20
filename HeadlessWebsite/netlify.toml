@@ -1,0 +1,20 @@
+[build]
+    command = "npm run netlify"
+    publish = "out"
+    functions="dist-functions"
+
+[build.environment]
+    CYPRESS_CACHE_FOLDER = './node_modules/CypressBinary'
+    TERM = "xterm"
+
+[[plugins]]
+    package = "netlify-plugin-cypress"
+
+    [plugins.inputs]
+        enable=true
+        record=true
+
+[[redirects]]
+    from = "/*"
+    to = "/404"
+    status = 404

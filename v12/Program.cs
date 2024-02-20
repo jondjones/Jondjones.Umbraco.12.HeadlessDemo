@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System.Configuration;
 using Umbraco.Cms.Core.Services;
 using v12.Data;
 
@@ -12,12 +15,16 @@ builder.Services.AddUmbraco(env, config)
     .AddDeliveryApi()
     .Build();
 
-
-//builder.Services.AddDbContext<MyContext>();
-
 builder.Services.AddUmbracoEFCoreContext<MyContext>(
     config.GetConnectionString("umbracoDbDSN"),
     config.GetConnectionStringProviderName("umbracoDbDSN"));
+
+// Non-Umbraco way
+//builder.Services.AddDbContext<MyContext>(
+//        options =>
+//        options.UseSqlServer(config.GetConnectionString("umbracoDbDSN"))
+//    );
+
 
 builder.Services.AddControllers();
 
